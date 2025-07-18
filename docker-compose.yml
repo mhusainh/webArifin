@@ -39,8 +39,6 @@ services:
         condition: service_healthy
     networks:
       - portfolio_network
-    volumes:
-      - ./logs:/app/logs
 
   # Nginx Reverse Proxy (Optional)
   nginx:
