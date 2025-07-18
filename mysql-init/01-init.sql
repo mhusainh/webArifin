@@ -34,6 +34,6 @@ INSERT IGNORE INTO users (username, password_hash)
 VALUES ('admin', 'scrypt:32768:8:1$2b$88$8f9c8e7d6b5a4c3e2f1a0b9c8d7e6f5a4b3c2d1e0f9a8b7c6d5e4f3a2b1c0d9e8f7a6b5c4d3e2f1a0b9c8d7e6f5a4b3c2d1e0f9a8b7c6d5e4f3a2b1c');
 
 -- Create indexes for better performance
-CREATE INDEX IF NOT EXISTS idx_messages_timestamp ON messages(timestamp);
-CREATE INDEX IF NOT EXISTS idx_messages_email ON messages(email);
-CREATE INDEX IF NOT EXISTS idx_users_username ON users(username);
+CREATE INDEX idx_messages_timestamp ON messages(timestamp);
+CREATE INDEX idx_messages_email ON messages(email);
+CREATE INDEX idx_users_username ON users(username);
