@@ -1,0 +1,29 @@
+2025-07-18 23:46:47,301 WARNING werkzeug  * Debugger is active!
+2025-07-18 23:46:47,303 INFO werkzeug  * Debugger PIN: 706-020-713
+2025-07-18 23:46:52,224 INFO werkzeug  * Detected change in 'C:\\Users\\NITRO 5\\Documents\\GitHub\\webArifin\\app.py', reloading
+2025-07-18 23:46:54,644 INFO __main__ Starting Flask application on 0.0.0.0:5000
+2025-07-18 23:46:54,655 WARNING werkzeug  * Debugger is active!
+2025-07-18 23:46:54,663 INFO werkzeug  * Debugger PIN: 706-020-713
+2025-07-18 17:05:18,493 INFO __main__ Starting Flask application on 0.0.0.0:5000
+2025-07-18 17:05:18,505 INFO werkzeug [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://172.18.0.3:5000
+2025-07-18 17:05:18,507 INFO werkzeug [33mPress CTRL+C to quit[0m
+2025-07-18 17:06:41,522 INFO werkzeug 172.18.0.1 - - [18/Jul/2025 17:06:41] "GET / HTTP/1.1" 200 -
+2025-07-18 17:06:41,717 INFO werkzeug 172.18.0.1 - - [18/Jul/2025 17:06:41] "GET /static/js/script.js HTTP/1.1" 200 -
+2025-07-18 17:06:41,717 INFO werkzeug 172.18.0.1 - - [18/Jul/2025 17:06:41] "GET /static/css/style.css HTTP/1.1" 200 -
+2025-07-18 17:06:43,707 INFO werkzeug 172.18.0.1 - - [18/Jul/2025 17:06:43] "[33mGET /sw.js HTTP/1.1[0m" 404 -
+2025-07-18 17:06:43,832 INFO werkzeug 172.18.0.1 - - [18/Jul/2025 17:06:43] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-07-18 17:07:42,538 INFO werkzeug 172.18.0.1 - - [18/Jul/2025 17:07:42] "GET / HTTP/1.1" 200 -
+2025-07-18 17:07:42,616 INFO werkzeug 172.18.0.1 - - [18/Jul/2025 17:07:42] "[36mGET /static/js/script.js HTTP/1.1[0m" 304 -
+2025-07-18 17:07:42,616 INFO werkzeug 172.18.0.1 - - [18/Jul/2025 17:07:42] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-07-18 17:07:44,418 INFO werkzeug 172.18.0.1 - - [18/Jul/2025 17:07:44] "[33mGET /sw.js HTTP/1.1[0m" 404 -
+2025-07-18 17:07:47,843 INFO werkzeug 172.18.0.1 - - [18/Jul/2025 17:07:47] "GET /login HTTP/1.1" 200 -
+2025-07-18 17:07:55,188 INFO werkzeug 172.18.0.1 - - [18/Jul/2025 17:07:55] "[32mPOST /login HTTP/1.1[0m" 302 -
+2025-07-18 17:07:55,315 INFO werkzeug 172.18.0.1 - - [18/Jul/2025 17:07:55] "GET /admin HTTP/1.1" 200 -
+2025-07-18 17:08:02,424 INFO werkzeug 172.18.0.1 - - [18/Jul/2025 17:08:02] "[32mGET /logout HTTP/1.1[0m" 302 -
+2025-07-18 17:08:02,448 INFO werkzeug 172.18.0.1 - - [18/Jul/2025 17:08:02] "GET / HTTP/1.1" 200 -
+2025-07-18 17:08:02,511 INFO werkzeug 172.18.0.1 - - [18/Jul/2025 17:08:02] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-07-18 17:08:02,513 INFO werkzeug 172.18.0.1 - - [18/Jul/2025 17:08:02] "[36mGET /static/js/script.js HTTP/1.1[0m" 304 -
+2025-07-18 17:08:03,673 INFO werkzeug 172.18.0.1 - - [18/Jul/2025 17:08:03] "[33mGET /sw.js HTTP/1.1[0m" 404 -

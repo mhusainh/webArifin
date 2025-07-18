@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Portfolio Arifin</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #f7fafc;
+            color: #2d3748;
+            line-height: 1.6;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1.5rem 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header h1 {
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+
+        .header-actions {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .btn {
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .btn-danger {
+            background: #e53e3e;
+            color: white;
+        }
+
+        .btn-danger:hover {
+            background: #c53030;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 20px;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 15px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            border: 1px solid #e2e8f0;
+        }
+
+        .stat-card h3 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #667eea;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-card p {
+            color: #4a5568;
+            font-weight: 500;
+        }
+
+        .messages-section {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            border: 1px solid #e2e8f0;
+            overflow: hidden;
+        }
+
+        .section-header {
+            padding: 1.5rem;
+            border-bottom: 1px solid #e2e8f0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .section-header h2 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #2d3748;
+        }
+
+        .refresh-btn {
+            background: #667eea;
+            color: white;
+        }
+
+        .refresh-btn:hover {
+            background: #5a67d8;
+        }
+
+        .messages-container {
+            max-height: 600px;
+            overflow-y: auto;
+        }
+
+        .message-card {
+            padding: 1.5rem;
+            border-bottom: 1px solid #e2e8f0;
+            transition: all 0.3s ease;
+        }
+
+        .message-card:hover {
+            background: #f7fafc;
+        }
+
+        .message-card:last-child {
+            border-bottom: none;
+        }
+
+        .message-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+        }
+
+        .message-info {
+            flex: 1;
+        }
+
+        .message-name {
+            font-weight: 600;
+            color: #2d3748;
+            font-size: 1.1rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .message-email {
+            color: #667eea;
+            font-size: 0.9rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .message-time {
+            color: #4a5568;
+            font-size: 0.8rem;
+        }
+
+        .message-actions {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .message-content {
+            background: #f7fafc;
+            padding: 1rem;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+            margin-top: 1rem;
+        }
+
+        .message-text {
+            color: #2d3748;
+            line-height: 1.6;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 3rem;
+            color: #4a5568;
+        }
+
+        .empty-state i {
+            font-size: 3rem;
+            color: #cbd5e0;
+            margin-bottom: 1rem;
+        }
+
+        .alert {
+            padding: 1rem;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+            font-weight: 500;
+        }
+
+        .alert-success {
+            background: #c6f6d5;
+            color: #22543d;
+            border: 1px solid #9ae6b4;
+        }
+
+        .alert-error {
+            background: #fed7d7;
+            color: #742a2a;
+            border: 1px solid #fc8181;
+        }
+
+        .alert-info {
+            background: #bee3f8;
+            color: #2a4365;
+            border: 1px solid #90cdf4;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 2rem;
+            color: #4a5568;
+        }
+
+        .loading i {
+            animation: spin 1s linear infinite;
+            font-size: 2rem;
+            color: #667eea;
+        }
+
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+
+            .message-header {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .message-actions {
+                align-self: flex-start;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-container">
+            <h1><i class="fas fa-tachometer-alt"></i> Admin Dashboard</h1>
+            <div class="header-actions">
+                <span>Welcome, {{ session.username }}!</span>
+                <a href="{{ url_for('home') }}" class="btn btn-secondary">
+                    <i class="fas fa-home"></i> Portfolio
+                </a>
+                <a href="{{ url_for('logout') }}" class="btn btn-secondary">
+                    <i class="fas fa-sign-out-alt"></i> Logout
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <!-- Flash Messages -->
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="alert alert-{{ category }}">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+        <!-- Statistics -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <h3 id="totalMessages">{{ messages|length }}</h3>
+                <p><i class="fas fa-envelope"></i> Total Pesan</p>
+            </div>
+            <div class="stat-card">
+                <h3 id="todayMessages">-</h3>
+                <p><i class="fas fa-calendar-day"></i> Pesan Hari Ini</p>
+            </div>
+            <div class="stat-card">
+                <h3 id="weekMessages">-</h3>
+                <p><i class="fas fa-calendar-week"></i> Pesan Minggu Ini</p>
+            </div>
+        </div>
+
+        <!-- Messages Section -->
+        <div class="messages-section">
+            <div class="section-header">
+                <h2><i class="fas fa-inbox"></i> Daftar Pesan</h2>
+                <button class="btn refresh-btn" onclick="refreshMessages()">
+                    <i class="fas fa-sync-alt"></i> Refresh
+                </button>
+            </div>
+
+            <div class="messages-container" id="messagesContainer">
+                {% if messages %}
+                    {% for message in messages %}
+                    <div class="message-card" data-message-id="{{ message[0] }}">
+                        <div class="message-header">
+                            <div class="message-info">
+                                <div class="message-name">{{ message[1] }}</div>
+                                <div class="message-email">
+                                    <i class="fas fa-envelope"></i> {{ message[2] }}
+                                </div>
+                                <div class="message-time">
+                                    <i class="fas fa-clock"></i> {{ message[4] }}
+                                </div>
+                            </div>
+                            <div class="message-actions">
+                                <button class="btn btn-danger" onclick="deleteMessage({{ message[0] }})">
+                                    <i class="fas fa-trash"></i> Hapus
+                                </button>
+                            </div>
+                        </div>
+                        <div class="message-content">
+                            <div class="message-text">{{ message[3] }}</div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                {% else %}
+                    <div class="empty-state">
+                        <i class="fas fa-inbox"></i>
+                        <h3>Belum Ada Pesan</h3>
+                        <p>Pesan dari contact form akan muncul di sini.</p>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Calculate statistics
+        function calculateStats() {
+            const messages = {{ messages|tojson }};
+            const today = new Date().toISOString().split('T')[0];
+            const weekAgo = new Date(Date.now() - 7 * 24 * 60 * 60 * 1000).toISOString();
+            
+            let todayCount = 0;
+            let weekCount = 0;
+            
+            messages.forEach(message => {
+                const messageDate = message[4].split(' ')[0]; // Get date part
+                if (messageDate === today) {
+                    todayCount++;
+                }
+                if (message[4] >= weekAgo) {
+                    weekCount++;
+                }
+            });
+            
+            document.getElementById('todayMessages').textContent = todayCount;
+            document.getElementById('weekMessages').textContent = weekCount;
+        }
+
+        // Delete message function
+        async function deleteMessage(messageId) {
+            if (!confirm('Apakah Anda yakin ingin menghapus pesan ini?')) {
+                return;
+            }
+
+            try {
+                const response = await fetch(`/api/messages/${messageId}`, {
+                    method: 'DELETE',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                });
+
+                const result = await response.json();
+
+                if (response.ok) {
+                    // Remove message card from DOM
+                    const messageCard = document.querySelector(`[data-message-id="${messageId}"]`);
+                    if (messageCard) {
+                        messageCard.style.animation = 'fadeOut 0.3s ease';
+                        setTimeout(() => {
+                            messageCard.remove();
+                            updateTotalCount();
+                            calculateStats();
+                            
+                            // Check if no messages left
+                            const remainingMessages = document.querySelectorAll('.message-card');
+                            if (remainingMessages.length === 0) {
+                                showEmptyState();
+                            }
+                        }, 300);
+                    }
+                    showNotification(result.message, 'success');
+                } else {
+                    showNotification(result.message, 'error');
+                }
+            } catch (error) {
+                showNotification('Terjadi kesalahan saat menghapus pesan', 'error');
+                console.error('Error:', error);
+            }
+        }
+
+        // Refresh messages
+        async function refreshMessages() {
+            const refreshBtn = document.querySelector('.refresh-btn');
+            const originalContent = refreshBtn.innerHTML;
+            
+            refreshBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Loading...';
+            refreshBtn.disabled = true;
+
+            try {
+                // Reload the page to get fresh data
+                window.location.reload();
+            } catch (error) {
+                showNotification('Gagal memuat ulang pesan', 'error');
+                refreshBtn.innerHTML = originalContent;
+                refreshBtn.disabled = false;
+            }
+        }
+
+        // Update total count
+        function updateTotalCount() {
+            const totalMessages = document.querySelectorAll('.message-card').length;
+            document.getElementById('totalMessages').textContent = totalMessages;
+        }
+
+        // Show empty state
+        function showEmptyState() {
+            const container = document.getElementById('messagesContainer');
+            container.innerHTML = `
+                <div class="empty-state">
+                    <i class="fas fa-inbox"></i>
+                    <h3>Belum Ada Pesan</h3>
+                    <p>Pesan dari contact form akan muncul di sini.</p>
+                </div>
+            `;
+        }
+
+        // Show notification
+        function showNotification(message, type) {
+            const notification = document.createElement('div');
+            notification.className = `alert alert-${type}`;
+            notification.textContent = message;
+            notification.style.position = 'fixed';
+            notification.style.top = '20px';
+            notification.style.right = '20px';
+            notification.style.zIndex = '10000';
+            notification.style.minWidth = '300px';
+            notification.style.transform = 'translateX(100%)';
+            notification.style.transition = 'transform 0.3s ease';
+            
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                notification.style.transform = 'translateX(0)';
+            }, 100);
+            
+            setTimeout(() => {
+                notification.style.transform = 'translateX(100%)';
+                setTimeout(() => {
+                    document.body.removeChild(notification);
+                }, 300);
+            }, 3000);
+        }
+
+        // Add CSS for fade out animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes fadeOut {
+                from { opacity: 1; transform: translateX(0); }
+                to { opacity: 0; transform: translateX(-100%); }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            calculateStats();
+        });
+    </script>
+</body>
+</html>
