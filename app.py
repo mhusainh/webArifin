@@ -142,9 +142,9 @@ portfolio_data = {
         }
     ],
     "contact": {
-        "email": "arifin@example.com",
-        "github": "github.com/arifin",
-        "linkedin": "linkedin.com/in/arifin",
+        "email": "mnarifin018@gmail.com",
+        "github": "github.com/arifin32602200103",
+        "linkedin": "linkedin.com/in/muhammad-nur-arifin-41316a191",
         "location": "Indonesia"
     }
 }
